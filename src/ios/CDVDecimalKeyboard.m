@@ -1,9 +1,10 @@
 #import "CDVDecimalKeyboard.h"
+#import <WebKit/WebKit.h>
 
 @implementation CDVDecimalKeyboard
 
 
-UIWebView* wv;
+WKWebView* wv;
 UIView* ui;
 CGRect cgButton;
 BOOL isDecimalKeyRequired=YES;
@@ -48,7 +49,7 @@ BOOL isAppInBackground=NO;
     [self removeDecimalButton];
 }
 -(void) setDecimalChar{
-    NSString* decimalChar = [wv stringByEvaluatingJavaScriptFromString:@"DecimalKeyboard.getDecimalChar();"];
+    NSString* decimalChar = @".";
     [decimalButton setTitle:decimalChar forState:UIControlStateNormal];
 }
 - (void) addDecimalButton{
@@ -150,7 +151,7 @@ BOOL isDifferentKeyboardShown=NO;
 
 - (void)buttonPressed:(UIButton *)button {
     [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
-    [wv stringByEvaluatingJavaScriptFromString:@"DecimalKeyboard.addDecimal();"];
+    [wv evaluateJavaScript:@"DecimalKeyboard.addDecimal();" completionHandler:nil];
 }
 
 - (void)buttonTapped:(UIButton *)button {
@@ -160,17 +161,7 @@ BOOL isDifferentKeyboardShown=NO;
     [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
 }
 -(BOOL)isTextAndDecimal{
-    BOOL bln = YES;
-    NSString *isText = [wv stringByEvaluatingJavaScriptFromString:@"DecimalKeyboard.getActiveElementType();"];
-    if([isText isEqual:@"text"]){
-        NSString *isDecimal = [wv stringByEvaluatingJavaScriptFromString:@"DecimalKeyboard.isDecimal();"];
-        if(![isDecimal isEqual:@"true"]){
-            bln=NO;
-        }
-    }else{
-        bln=NO;
-    }
-    return bln;
+    return YES;
 }
 BOOL stopSearching=NO;
 - (void)listSubviewsOfView:(UIView *)view {
