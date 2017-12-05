@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-decimal-keyboard",
+  "version": "1.0.0",
+  "description": "Cordova plugin to show decimal keyboard on iPhones",
+  "cordova": {
+    "id": "cordova-plugin-decimal-keyboard",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/david90/cordova-plugin-decimal-keyboard.git"
+  },
+  "keywords": [
+    "cordova",
+    "keyboard",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "decimal keyboard"
+  ],
+  "author": "mrchandoo",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/issues"
+  },
+  "homepage": "https://github.com/david90/cordova-plugin-decimal-keyboard#readme"
+}
